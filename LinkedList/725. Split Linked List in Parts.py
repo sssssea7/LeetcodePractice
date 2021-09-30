@@ -37,3 +37,27 @@ class Solution:
                 ans.append(res)
         return ans
         
+
+
+class Solution:
+    def splitListToParts(self, head: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
+        cur = head
+        N = 0
+        while cur:
+            N += 1
+            cur = cur.next
+        L, ext = divmod(N, k)
+        cur = head
+        ans = []
+        for i in range(k):
+            tmp = cur
+            for j in range(L+(i<ext)-1):
+                if cur: cur = cur.next
+            if cur:
+                cur.next, cur = None, cur.next
+                # cur, cur.next = cur.next, None   # why this not working
+                # tmp2 = cur.next
+                # cur.next = None
+                # cur = tmp2
+            ans.append(tmp)
+        return ans
