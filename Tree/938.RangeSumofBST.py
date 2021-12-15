@@ -1,17 +1,16 @@
-class Solution(object):
-    def rangeSumBST(self, root, low, high):
-        """
-        :type root: TreeNode
-        :type low: int
-        :type high: int
-        :rtype: int
-        """
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def rangeSumBST(self, root: Optional[TreeNode], l: int, h: int) -> int:
         self.ans = 0
-        #self.ans = Set()
         def dfs(node):
             if not node: return
             dfs(node.left)
             dfs(node.right)
-            if node.val>=low and node.val<=high: self.ans += node.val
+            if l<=node.val<=h: self.ans += node.val
         dfs(root)
         return self.ans

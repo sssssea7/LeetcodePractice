@@ -7,3 +7,8 @@ class Solution:
                 ans = max(ans, cur)
                 cur = 1
         return max(ans, cur)
+
+
+class Solution:
+    def maxPower(self, s: str) -> int:
+        return max([len(list(v)) for k, v in groupby(s)])
