@@ -20,3 +20,12 @@ class Solution:
                 dfs(curr_s+c, d[1:])
         dfs("", digits)
         return self.ans
+
+# similar dfs
+# def dfs(i, cur):
+#             if len(cur)==len(digits): 
+#                 ans.append(cur)
+#                 return
+#             for c in table[digits[i]]:
+#                 dfs(i+1, cur+c)
+#         dfs(0, "")
