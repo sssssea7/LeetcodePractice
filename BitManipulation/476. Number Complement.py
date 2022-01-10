@@ -16,7 +16,7 @@ class Solution:
 
 
 class Solution:
-    def findComplement(self, num: int) -> int:
+    def findComplement(self, n: int) -> int:
         mask = 0
-        while mask < num: mask = (mask << 1) + 1
-        return num ^ mask
+        while mask < n: mask = (mask << 1) + 1
+        return n ^ mask
