@@ -8,3 +8,15 @@ class Solution:
         for a, b in B:
             if a==0:
                 return max((b+1)//2, d1, d2)
+
+
+class Solution:
+    def maxDistToClosest(self, A: List[int]) -> int:
+        ans = A.index(1)
+        A.reverse()
+        ans = max(ans, A.index(1))
+        for k, v in groupby(A):
+            if not k:
+                cur = len(list(v))
+                ans = max(ans, (cur+1)//2)
+        return ans
