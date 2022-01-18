@@ -17,6 +17,5 @@ class Solution:
         ans = max(ans, A.index(1))
         for k, v in groupby(A):
             if not k:
-                cur = len(list(v))
-                ans = max(ans, (cur+1)//2)
+                ans = max(ans, (len(list(v))+1)//2)
         return ans
