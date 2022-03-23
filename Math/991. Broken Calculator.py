@@ -16,3 +16,14 @@ class Solution:
             X -= a//2
         ans += (X * 2) % Y + 1
         return int(ans)
+
+
+class Solution:
+    def brokenCalc(self, start: int, t: int) -> int:
+        ans = 0
+        while t>start:
+            if t%2 == 1: 
+                t += 1
+            else: t //= 2
+            ans += 1
+        return start-t+ans
