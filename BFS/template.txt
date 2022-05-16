@@ -1,0 +1,10 @@
+def graghBFS(self, A: List[List[int]]) -> int:
+    Q = [STATE_STATE]
+    seen = set()
+    while Q:
+        i = Q.pop(0)
+        if i not in seen:
+            seen.add(i)
+            for NEXT_STATES:
+                if CONDITION:
+                    Q.append(NEXT_STATE)
