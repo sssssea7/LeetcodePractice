@@ -10,3 +10,14 @@ class Solution:
             return dfs(x+1, y)+dfs(x, y+1)
         
         return dfs(0, 0)
+
+class Solution:
+    def uniquePathsWithObstacles(self, A: List[List[int]]) -> int:
+        m = len(A)
+        n = len(A[0])
+        @cache
+        def dfs(i, j):
+            if i==m-1 and j==n-1 and not A[i][j]: return 1
+            if i==m or j==n or A[i][j]: return 0
+            return dfs(i+1, j)+dfs(i, j+1)
+        return dfs(0, 0)
