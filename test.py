@@ -1,5 +1,6 @@
-import heapq
 
+# prepare-the-bunnies-escape
+import heapq
 def solution(A):
     m = len(A)
     n = len(A[0])
@@ -22,10 +23,10 @@ def solution(A):
                 else: 
                     seen[(x+dx, y+dy)] = canRemove
                     heapq.heappush(pq, (cost+1, x+dx, y+dy, canRemove))
-
-
 ans = solution([[0, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 0], [0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 1, 1], [0, 1, 1, 1, 1, 1], [0, 0, 0, 0, 0, 1]])
 print(ans)
+
+
 # def solution(A):
 #     A = [list(map(int, x.split('.'))) for x in A]
 #     return ['.'.join(map(str, x)) for x in sorted(A)]
