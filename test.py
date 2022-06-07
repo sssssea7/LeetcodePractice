@@ -1,30 +1,45 @@
+# fuel-injection-perfection
+def solution(n):
+    n = int(n)
+    ans = 0
+    while n>1:
+        if n&1:
+            if n&2 and n!=3: n += 1
+            else: n -= 1
+        else: n >>= 1
+        ans += 1 
+    return ans
 
-# prepare-the-bunnies-escape
-import heapq
-def solution(A):
-    m = len(A)
-    n = len(A[0])
-    D = [(0, 1), (0, -1), (1, 0), (-1, 0)]
-    
-    if A[0][0]==1: pq = [(0, 0, 0, 0)]
-    else: pq = [(1, 0, 0, 1)]
-
-    seen = {}
-    seen[(0, 0)] = (A[0][0]==0)
-    while pq:
-        cost, x, y, canRemove = heapq.heappop(pq)
-        if x==m-1 and y==n-1: return cost
-        for dx, dy in D:
-            if 0<=x+dx<m and 0<=y+dy<n and ((x+dx, y+dy) not in seen or canRemove>seen[(x+dx, y+dy)]) :
-                if A[x+dx][y+dy]==1:
-                    if canRemove: 
-                        seen[(x+dx, y+dy)] = 0
-                        heapq.heappush(pq, (cost+1, x+dx, y+dy, 0))
-                else: 
-                    seen[(x+dx, y+dy)] = canRemove
-                    heapq.heappush(pq, (cost+1, x+dx, y+dy, canRemove))
-ans = solution([[0, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 0], [0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 1, 1], [0, 1, 1, 1, 1, 1], [0, 0, 0, 0, 0, 1]])
+ans = solution(0)
 print(ans)
+
+
+# # prepare-the-bunnies-escape
+# import heapq
+# def solution(A):
+#     m = len(A)
+#     n = len(A[0])
+#     D = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+    
+#     if A[0][0]==1: pq = [(0, 0, 0, 0)]
+#     else: pq = [(1, 0, 0, 1)]
+
+#     seen = {}
+#     seen[(0, 0)] = (A[0][0]==0)
+#     while pq:
+#         cost, x, y, canRemove = heapq.heappop(pq)
+#         if x==m-1 and y==n-1: return cost
+#         for dx, dy in D:
+#             if 0<=x+dx<m and 0<=y+dy<n and ((x+dx, y+dy) not in seen or canRemove>seen[(x+dx, y+dy)]) :
+#                 if A[x+dx][y+dy]==1:
+#                     if canRemove: 
+#                         seen[(x+dx, y+dy)] = 0
+#                         heapq.heappush(pq, (cost+1, x+dx, y+dy, 0))
+#                 else: 
+#                     seen[(x+dx, y+dy)] = canRemove
+#                     heapq.heappush(pq, (cost+1, x+dx, y+dy, canRemove))
+# ans = solution([[0, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 0], [0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 1, 1], [0, 1, 1, 1, 1, 1], [0, 0, 0, 0, 0, 1]])
+# print(ans)
 
 
 # def solution(A):
