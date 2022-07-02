@@ -27,3 +27,31 @@ class Solution:
                 ans = max(ans, cur)
                 cur = 1
         return max(ans, cur)
+
+
+# union find
+class DSU:
+    def __init__(self, n):
+        self.p = list(range(n))
+
+    def find(self, x):
+        if self.p[x]!=x: self.p[x] = self.find(self.p[x])
+        return self.p[x]
+
+    def union(self, x, y):
+        self.p[self.find(x)] = self.find(y)
+
+        
+class Solution:
+    def longestConsecutive(self, A: List[int]) -> int:
+        A = set(A)
+        dsu = DSU(len(A))
+        mp = {x: i for i, x in enumerate(sorted(A))}
+        
+        for x in A:
+            if x+1 in A: dsu.union(mp[x], mp[x+1])
+            if x-1 in A: dsu.union(mp[x-1], mp[x])
+        
+        cnt = Counter([dsu.find(mp[x]) for x in A])
+        
+        return max(cnt.values(), default=0)
