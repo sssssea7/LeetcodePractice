@@ -1,6 +1,24 @@
 """ L2: Hash Table + DP
 Find left and right endpoint and sequence length then update DP table
 """
+
+# set
+class Solution:
+    def longestConsecutive(self, A: List[int]) -> int:
+        A = set(A)
+        ans = 0
+        for a in A:
+            if a-1 not in A:
+                cur = a
+                cur_l = 1
+                while cur+1 in A:
+                    cur += 1
+                    cur_l += 1
+                ans = max(ans, cur_l)
+        return ans
+
+
+
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
         d, ans = {}, 0
