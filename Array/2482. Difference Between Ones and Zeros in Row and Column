@@ -1,0 +1,14 @@
+"""
+diff[i][j] = (onesRowi-zerosRowi) + (onesColj-zerosColj)
+"""
+
+class Solution:
+    def onesMinusZeros(self, A: List[List[int]]) -> List[List[int]]:
+        
+        rows = [x.count(1)-x.count(0) for i, x in enumerate(A)] # rowi
+        cols = [x.count(1)-x.count(0) for i, x in enumerate(zip(*A))] #colj
+        ans = [[0 for j in range(len(A[0]))] for i in range(len(A))]
+        for i, r in enumerate(rows):
+            for j, c in enumerate(cols):
+                ans[i][j] = r+c
+        return ans
