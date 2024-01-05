@@ -15,9 +15,3 @@ class UndergroundSystem:
         t, n = self.out[startStation][endStation]
         return t/n
 
-
-# Your UndergroundSystem object will be instantiated and called as such:
-# obj = UndergroundSystem()
-# obj.checkIn(id,stationName,t)
-# obj.checkOut(id,stationName,t)
-# param_3 = obj.getAverageTime(startStation,endStation)
