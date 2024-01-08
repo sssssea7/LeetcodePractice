@@ -7,11 +7,11 @@
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
         self.ans = 0
-        def dfs(node, path):
+        def dfs(node, mx):
             if not node: return
-            if len(path) == sum([1 for n in path if node.val>=n]):
-                self.ans += 1                
-            dfs(node.left, path+[node.val])
-            dfs(node.right, path+[node.val])
-        dfs(root, [])
-        return self.ans 
+            if node.val>=mx: self.ans += 1
+            dfs(node.left, max(mx, node.val))
+            dfs(node.right, max(mx, node.val))
+        dfs(root, -inf)
+        return self.ans
+        
