@@ -1,10 +1,11 @@
+# https://leetcode.com/problems/set-mismatch/
 class Solution:
-    def findErrorNums(self, nums: List[int]) -> List[int]:
-        arr = [0] * (len(nums)+1)
-        for n in nums:
-            arr[n] += 1
-        du, mi = 0, 0
-        for i in range(1, len(arr)):
-            if arr[i]==0: mi = i
-            if arr[i]==2: du = i
-        return [du, mi]
+    def findErrorNums(self, A: List[int]) -> List[int]:
+        B = [1] + [0]*len(A)
+        for x in A:
+            B[x] += 1
+        a, b = 0, 0
+        for i, x in enumerate(B):
+            if x==2: a = i
+            if x==0: b = i
+        return [a, b]
