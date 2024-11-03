@@ -16,14 +16,14 @@ class Solution:
                 ans.extend(dfs(node[n]))
             return ans
         
-        ans = []
-        def dfs(node):
-            nonlocal ans
-            if "#" in node:
-                ans.append(node["#"])
-                return 
-            for n in node:
-                dfs(node[n])
+        # ans = []
+        # def dfs(node):
+        #     nonlocal ans
+        #     if "#" in node:
+        #         ans.append(node["#"])
+        #         return 
+        #     for n in node:
+        #         dfs(node[n])
         dfs(trie)
         
         return ans
