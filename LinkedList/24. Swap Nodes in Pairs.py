@@ -13,3 +13,21 @@ class Solution:
             prev.next.next = cur
             prev, cur = cur, cur.next
         return dummy.next
+
+class Solution:
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        ans = ListNode(next=head)
+        pre = ans
+        cur = pre.next
+        while cur and cur.next:
+            nxt = cur.next
+            n3 = nxt.next
+
+            pre.next = nxt
+            nxt.next = cur
+            cur.next = n3
+
+            pre = cur
+            cur = n3
+        return ans.next
+

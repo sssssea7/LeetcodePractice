@@ -1,13 +1,14 @@
+# https://leetcode.com/problems/container-with-most-water/?envType=study-plan-v2&envId=leetcode-75
+
 class Solution:
     def maxArea(self, A: List[int]) -> int:
-        ans = 0
         i, j = 0, len(A)-1
+        ans = 0
         while i<j:
+            cur = (j-i) * min(A[i], A[j])
+            ans = max(cur, ans)
             if A[i]<A[j]:
-                ans = max(ans, (j-i)*A[i])
                 i += 1
             else:
-                ans = max(ans, (j-i)*A[j])
                 j -= 1
         return ans
-            
