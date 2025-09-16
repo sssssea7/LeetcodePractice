@@ -1,3 +1,18 @@
+# https://leetcode.com/problems/binary-tree-right-side-view/
+
+class Solution:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        ans = []
+        def dfs(node, d):
+            if not node: return
+            if d==len(ans):
+                ans.append(node.val)
+            dfs(node.right, d+1)
+            dfs(node.left, d+1)
+        dfs(root, 0)
+        return ans
+
+
 class Solution:
     def rightSideView(self, root: TreeNode) -> List[int]:
         tree = collections.defaultdict(list)
@@ -21,3 +36,5 @@ class Solution:
                 if curr.left: T.append(curr.left)
                 if curr.right: T.append(curr.right)
         return ans
+
+

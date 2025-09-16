@@ -15,3 +15,12 @@ class Solution:
         dfs(root, -inf)
         return self.ans
         
+
+class Solution:
+    def goodNodes(self, root: TreeNode) -> int:
+        def dfs(node, mx):
+            if not node: return 0
+            l = dfs(node.left, max(mx, node.val))
+            r = dfs(node.right, max(mx, node.val))
+            return l + r + (node.val>=mx)
+        return dfs(root,-inf)

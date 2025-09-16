@@ -12,3 +12,14 @@ class Solution:
             return dfs(node.left, t-node.val) or dfs(node.right, t-node.val)
         return dfs(root, t)
                 
+
+class Solution:
+    def hasPathSum(self, root: Optional[TreeNode], t: int) -> bool:
+        def dfs(node, sm):
+            if not node: return False
+            if not node.left and not node.right and sm+node.val == t: return True
+            l = dfs(node.left, sm+node.val)
+            r = dfs(node.right, sm+node.val)
+            return l or r
+
+        return dfs(root, 0)
