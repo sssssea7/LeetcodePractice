@@ -31,3 +31,13 @@ class Solution:
             dp[i] = min(dp[i-1], A[i])
             ans = max(ans, A[i]-dp[i-1])
         return ans
+
+# one pass
+class Solution:
+    def maxProfit(self, A: List[int]) -> int:
+        mx_profit = 0
+        mn_price = A[0]
+        for a in A[1:]:
+            mn_price = min(mn_price, a)
+            mx_profit = max(mx_profit, a-mn_price)
+        return mx_profit
