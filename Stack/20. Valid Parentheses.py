@@ -10,3 +10,20 @@ class Solution:
                 else: return False
             else: return False
         return True if not stk else False
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stk = []
+        for c in s:
+            if c in "([{":
+                stk.append(c)
+            elif stk:
+                cur = stk.pop()
+                if c == ")" and cur != "(" or c == "]" and cur != "[" or c == "}" and cur != "{":
+                    return False
+            else: 
+                return False
+        return True if not stk else False
+
+            
+                
