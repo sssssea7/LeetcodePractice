@@ -24,6 +24,17 @@ class Solution:
         dfs(root,0)
         return [v[-1].val for k,v in tree.items()]
     
+class Solution:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        ans = {}
+        def dfs(node, d):
+            if not node: 
+                return 
+            ans.setdefault(d, node.val)
+            dfs(node.right, d+1)
+            dfs(node.left, d+1)
+        dfs(root, 0)
+        return [ans[x] for x in sorted(ans.keys())]
 
 class Solution:
     def rightSideView(self, root: TreeNode) -> List[int]:
