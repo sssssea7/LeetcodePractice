@@ -17,19 +17,19 @@ class Solution:
 
 
 class Solution:
-def levelOrder(self, root: TreeNode) -> List[List[int]]:
-    if not root: return []
-    ans = []
-    Q = [root]
-    while Q:
-        lvl = []
-        for _ in range(len(Q)):
-            curr = Q.pop(0)
-            lvl.append(curr.val)
-            if curr.left: Q.append(curr.left)
-            if curr.right: Q.append(curr.right)
-        ans.append(lvl)
-    return ans
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        if not root: return []
+        ans = []
+        Q = [root]
+        while Q:
+            lvl = []
+            for _ in range(len(Q)):
+                curr = Q.pop(0)
+                lvl.append(curr.val)
+                if curr.left: Q.append(curr.left)
+                if curr.right: Q.append(curr.right)
+            ans.append(lvl)
+        return ans
 
     
 # template

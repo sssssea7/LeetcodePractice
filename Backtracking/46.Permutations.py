@@ -1,3 +1,20 @@
+# https://leetcode.com/problems/permutations/
+
+class Solution:
+    def permute(self, A: List[int]) -> List[List[int]]:
+        ans = []
+        path = []
+        def dfs(i, s):
+            if len(path)==len(A):
+                ans.append(path.copy())
+                return
+            for x in s:
+                path.append(x)
+                dfs(i+1, s-{x})
+                path.pop()
+        dfs(0, set(A))
+        return ans
+
 class Solution(object):
     def permute(self, nums):
         """
