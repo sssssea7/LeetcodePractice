@@ -1,7 +1,18 @@
+# https://leetcode.com/problems/house-robber/
+
 class Solution:
-    def rob(self, A: List[int]) -> int:
+    def rob(self, nums: List[int]) -> int:
         @cache
-        def fn(i):
-            if i>=len(A): return 0
-            else: return max(fn(i+1), A[i]+fn(i+2))
-        return fn(0)
+        def dfs(i):
+            if i<0:
+                return 0
+            return max(dfs(i-2)+nums[i], dfs(i-1))
+        return dfs(len(nums)-1)
+
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+        dp = [0] * (n+2)
+        for i in range(n):
+            dp[i+2] = max(dp[i]+nums[i], dp[i+1])
+        return dp[-1]

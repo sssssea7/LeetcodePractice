@@ -1,6 +1,6 @@
 class Solution:
     def canPartition(self, A: List[int]) -> bool:
-        if sum(A)&1: return False
+        if sum(A)&1: return False      # if sum is odd, can't be partitioned into 2 equal subsetsx
         s = sum(A)//2
         @cache
         def dfs(i, cur):
