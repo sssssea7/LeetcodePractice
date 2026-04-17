@@ -1,3 +1,33 @@
+# https://leetcode.com/problems/perfect-squares/description/
+
+class Solution:
+    def numSquares(self, n: int) -> int:
+        nums = [x**2 for x in range(1, 1+ceil(sqrt(n)))]
+        @cache
+        def dfs(i, c):
+            if i<0:
+                return 0 if c==0 else inf
+            if c-nums[i] < 0:
+                return dfs(i-1, c)
+            return min(1+dfs(i, c-nums[i]), dfs(i-1, c))
+        ans = dfs(len(nums)-1, n)
+        dfs.cache_clear()
+        return ans
+
+class Solution:
+    def numSquares(self, n: int) -> int:
+        nums = [x**2 for x in range(1, 1+ceil(sqrt(n)))]
+        m = len(nums)
+        dp = [[inf] * (n+1) for _ in range(m+1)]
+        dp[0][0] = 0
+        for i in range(m):
+            for c in range(n+1):
+                if c-nums[i] < 0:
+                    dp[i+1][c] = dp[i][c]
+                else:
+                    dp[i+1][c] = min(1+dp[i+1][c-nums[i]], dp[i][c])
+        return dp[-1][-1]
+
 class Solution:
     def numSquares(self, n: int) -> int:
         if int(sqrt(n))**2 == n: return 1

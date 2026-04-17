@@ -1,6 +1,6 @@
 # https://leetcode.com/problems/longest-increasing-subsequence/
 
-# O(nlogn)
+# binary search: O(nlogn)
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         g = []
