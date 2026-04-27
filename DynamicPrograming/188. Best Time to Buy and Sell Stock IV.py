@@ -1,3 +1,30 @@
+# https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/description/
+
+class Solution:
+    def maxProfit(self, k: int, prices: List[int]) -> int:
+        n = len(prices)
+        @cache
+        def dfs(i, j, hold):
+            if j<0: return -inf
+            if i<0:
+                return -inf if hold else 0
+            if hold:
+               return max(dfs(i-1, j, True), dfs(i-1, j-1, False)-prices[i])
+            return max(dfs(i-1, j, False), dfs(i-1, j, True)+prices[i])
+        return dfs(n-1, k, 0)
+
+class Solution:
+    def maxProfit(self, k: int, prices: List[int]) -> int:
+        n = len(prices)
+        dp = [[[-inf]*2 for _ in range(k+2)] for _ in range(n+1)]
+        for j in range(1, k+2):
+            dp[0][j][0] = 0
+        for i, p in enumerate(prices):
+            for j in range(1, k+2):
+                dp[i+1][j][0] = max(dp[i][j][0], dp[i][j-1][1]+p)
+                dp[i+1][j][1] = max(dp[i][j][1], dp[i][j][0]-p)
+        return dp[n][k+1][0]
+
 class Solution:
     def maxProfit(self, k: int, A: List[int]) -> int:
         @cache
