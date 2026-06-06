@@ -17,7 +17,34 @@ class Solution:
                 ans = max(ans, cur_l)
         return ans
 
+# union find
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
 
+        A = {}
+        nums = set(nums)
+        size = {x: 1 for x in nums}
+        
+        def find(x):
+            if x not in A:
+                A[x] = x
+            elif A[x] != x:
+                A[x] = find(A[x])
+            return A[x]
+
+        def union(x, y):
+            size[find(y)] += size[find(x)]
+            A[find(x)] = find(y)
+            
+
+        
+        for x in nums:
+            if x+1 in nums:
+                union(x, x+1)
+
+        return max(size.values())
 
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
