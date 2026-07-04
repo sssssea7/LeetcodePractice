@@ -4,7 +4,7 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         cnt = Counter(nums)
-        buckets = [[] for _ in range(len(nums)+1)]
+        buckets = [[] for _ in range(len(nums)+1)] # defaultdict(list) is also ok
         for num, freq in cnt.items():
             buckets[freq].append(num)
         ans = []

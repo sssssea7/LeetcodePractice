@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/trapping-rain-water/
 
+# two pointers
 class Solution:
     def trap(self, A: List[int]) -> int:
         i, j = 0, len(A)-1
@@ -35,4 +36,19 @@ class Solution:
 
         return ans
 
-
+# monotonic stack
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        n = len(height)
+        ans = 0
+        dec_stack = []
+        for i in range(n):
+            while dec_stack and height[i] >= height[dec_stack[-1]]:
+                bottom_h = height[dec_stack.pop()]
+                if not dec_stack:
+                    break
+                left = dec_stack[-1]
+                h = min(height[left], height[i]) - bottom_h
+                ans += h * (i-left-1)
+            dec_stack.append(i)
+        return ans
