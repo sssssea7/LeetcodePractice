@@ -21,10 +21,12 @@ class Solution:
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        if root == None or root == p or root == q: return root
+        if not root or p==root or q==root:
+            return root
         l = self.lowestCommonAncestor(root.left, p, q)
         r = self.lowestCommonAncestor(root.right, p, q)
-        if l != None:
-            if r != None: return root
+        if l and r:
+            return root
+        if l:
             return l
         return r

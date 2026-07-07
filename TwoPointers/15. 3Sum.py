@@ -5,7 +5,7 @@ class Solution:
         ans = []
         for i in range(len(A)-2):
             if i>0 and A[i] == A[i-1]: continue
-            if A[i] + A[i+1] + A[i+1] > 0: break
+            if A[i] + A[i+1] + A[i+2] > 0: break
             if A[i] + A[-2] + A[-1] < 0: continue
             l, r = i+1, len(A)-1
             while l<r:
