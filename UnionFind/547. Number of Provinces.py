@@ -4,7 +4,6 @@
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
         n = len(isConnected)
-        G = {}
         parent = list(range(n))
         def find(x):
             if parent[x] != x:
@@ -13,13 +12,13 @@ class Solution:
 
         def union(x, y):
             parent[find(x)] = find(y)
-        
+
         for i in range(n):
-            for j in range(n):
-                if isConnected[i][j]==1:
+            for j in range(i+1, n):
+                if isConnected[i][j]:
                     union(i, j)
-        
-        return len(set(find(x) for x in parent))
+
+        return len(set([find(x) for x in parent]))
 
 # dfs solution
 class Solution:

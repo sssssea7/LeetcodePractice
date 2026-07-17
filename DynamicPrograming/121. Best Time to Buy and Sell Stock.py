@@ -16,7 +16,7 @@ class Solution:
         ans = 0
         cur = 0
         for x in A:
-            cur = max(0, cur+x) # cur = max(x, cur+x) also works
+            cur = max(x, cur+x) # cur = max(0, cur+x) also works because global max (ans) is always >= 0
             ans = max(ans, cur)
         return ans
 

@@ -16,3 +16,22 @@ class Solution:
                 path.pop()
         dfs(1)
         return ans
+
+class Solution:
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        ans = []
+        stack = []
+        def dfs(i):
+            if len(stack)==k:
+                ans.append(stack.copy())
+                return
+            if i==n+1:
+                return
+            
+            dfs(i+1)
+
+            stack.append(i)
+            dfs(i+1)
+            stack.pop()
+        dfs(1)
+        return ans
