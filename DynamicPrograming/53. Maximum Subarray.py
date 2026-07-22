@@ -1,3 +1,16 @@
+# https://leetcode.com/problems/maximum-subarray/
+
+# kadane
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        n = len(nums)
+        current_max = -inf
+        global_max = -inf
+        for x in nums:
+            current_max = max(x, x+current_max)
+            global_max = max(current_max, global_max)
+        return global_max
+
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
         dp = nums

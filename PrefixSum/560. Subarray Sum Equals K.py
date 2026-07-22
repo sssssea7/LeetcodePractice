@@ -1,11 +1,13 @@
+# https://leetcode.com/problems/subarray-sum-equals-k/
+
+# prefix[i] + (-prefix[j]) = k -> two sum
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        cnt = Counter()
-        cnt[0] = 1
-        prefix = 0
+        prefixes = list(accumulate(nums, initial=0))
+        frequency = defaultdict(int) # prefix: cnt
         ans = 0
-        for n in nums:
-            prefix += n
-            ans += cnt[prefix-k]
-            cnt[prefix] += 1
+        for prefix in prefixes:
+            needed = prefix - k
+            ans += frequency[needed]
+            frequency[prefix] += 1
         return ans

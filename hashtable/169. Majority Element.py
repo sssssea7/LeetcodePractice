@@ -15,6 +15,7 @@ class Solution:
 
 
 # Boyer-Moore majority vote algorithm
+# The idea is that if we pair up each occurrence of the majority element with a different element, they will cancel each other out in the end. Since the majority element appears more than n/2 times, it will always be the last remaining element.
 class Solution:
     def majorityElement(self, A: List[int]) -> int:
         cand = None

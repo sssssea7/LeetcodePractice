@@ -27,7 +27,7 @@ class Solution:
         @cache
         def dfs(i, c):
             if i<0:
-                return True if c==0 else False
+                return c==0
             if c-nums[i] < 0:
                 return dfs(i-1, c)
             return dfs(i-1, c-nums[i]) or dfs(i-1, c)

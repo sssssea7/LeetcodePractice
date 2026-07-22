@@ -4,7 +4,7 @@
 # 
 # nums1: [ ... left1 | right1 ... ]
 # nums2: [ ... left2 | right2 ... ]
-# The partition is correct if left1 <= right2 and left2 <= right1
+# The partition is correct if left1 <= right2 and left2 <= right1, and the median is either max(left1, left2) or (max(left1, left2)+min(right1, right2))/2 depending on the total length of the two arrays.
 
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:

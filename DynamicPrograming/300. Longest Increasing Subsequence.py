@@ -1,6 +1,7 @@
 # https://leetcode.com/problems/longest-increasing-subsequence/
 
 # O(nlogn)
+# the idea is to maintain a list g where g[i] is the smallest possible tail value of an increasing subsequence of length i+1. For each number x in nums, we can use binary search to find the index i of the smallest number in g that is greater than or equal to x. If such a number exists, we replace it with x; otherwise, we append x to g. The length of g at the end will be the length of the longest increasing subsequence.
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         g = []
